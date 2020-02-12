@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <integer name="span_count">2</integer>
+    <integer name="span_count_recipe">1</integer>
+    <integer name="span_count_ingredient">1</integer>
+    <bool name="tablet_mode">true</bool>
+    <dimen name="video_height" tools:ignore="MissingDefaultResource">250dp</dimen>
+</resources>
