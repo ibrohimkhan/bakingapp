@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -26,6 +27,9 @@ public class RecipeListFragment extends Fragment {
     private RecipeListViewModel viewModel;
 
     private RecipeListAdapter adapter;
+
+    @BindView(R.id.pb_loader)
+    ProgressBar progressBar;
 
     @BindView(R.id.rv_recipes)
     RecyclerView recyclerView;
@@ -68,6 +72,13 @@ public class RecipeListFragment extends Fragment {
 
         viewModel.recipe.observe(this, recipe -> {
             sharedViewModel.selectedRecipe(recipe);
+        });
+
+        viewModel.loading.observe(this, loading -> {
+            if (loading.getIfNotHandled() == null) return;
+
+            if (loading.peek()) progressBar.setVisibility(View.VISIBLE);
+            else progressBar.setVisibility(View.GONE);
         });
     }
 }

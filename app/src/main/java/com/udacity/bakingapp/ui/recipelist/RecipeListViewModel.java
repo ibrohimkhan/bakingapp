@@ -23,6 +23,7 @@ public class RecipeListViewModel extends ViewModel {
     MutableLiveData<List<Recipe>> recipes = new MutableLiveData<>();
     MutableLiveData<Boolean> withError = new MutableLiveData<>();
     MutableLiveData<Event<Recipe>> recipe = new MutableLiveData<>();
+    MutableLiveData<Event<Boolean>> loading = new MutableLiveData<>();
 
     @Override
     protected void onCleared() {
@@ -39,6 +40,8 @@ public class RecipeListViewModel extends ViewModel {
     }
 
     private void loadRecipes() {
+        loading.setValue(new Event<>(true));
+
         disposable.add(
                 RecipeRepository.loadRecipes()
                         .subscribeOn(Schedulers.io())
@@ -48,10 +51,12 @@ public class RecipeListViewModel extends ViewModel {
 
     private void handleError(Throwable throwable) {
         Log.e(TAG, throwable.getMessage());
+        loading.postValue(new Event<>(false));
         withError.postValue(true);
     }
 
     private void notifyUI(List<Recipe> recipes) {
+        loading.postValue(new Event<>(false));
         this.recipes.postValue(recipes);
     }
 }

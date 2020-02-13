@@ -92,6 +92,7 @@ public class StepFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             playbackPosition = savedInstanceState.getLong("position");
+            playWhenReady = savedInstanceState.getBoolean("state");
         }
 
         sharedViewModel.getStep().observe(this, event -> {
@@ -106,10 +107,6 @@ public class StepFragment extends Fragment {
 
             if (!TextUtils.isEmpty(step.videoURL))
                 initializePlayer(step.videoURL);
-
-            else if (!TextUtils.isEmpty(step.thumbnailURL))
-                initializePlayer(step.thumbnailURL);
-
             else
                 playerView.setVisibility(View.GONE);
         });
@@ -124,7 +121,9 @@ public class StepFragment extends Fragment {
             hideSystemUi();
         }
 
-        if (step != null)
+        if (step == null || TextUtils.isEmpty(step.videoURL))
+            playerView.setVisibility(View.GONE);
+        else
             initializePlayer(step.videoURL);
     }
 
@@ -137,6 +136,7 @@ public class StepFragment extends Fragment {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putLong("position", playbackPosition);
+        outState.putBoolean("state", playWhenReady);
     }
 
     private void initializePlayer(String url) {
@@ -158,7 +158,7 @@ public class StepFragment extends Fragment {
     private void releasePlayer() {
         if (player != null) {
             playbackPosition = player.getCurrentPosition();
-            playWhenReady = player.getPlayWhenReady();
+            playWhenReady = player.isPlaying();
 
             player.release();
             player = null;
@@ -166,8 +166,13 @@ public class StepFragment extends Fragment {
     }
 
     private MediaSource buildMediaSource(Uri uri) {
-        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(getActivity(), Util.getUserAgent(getActivity(), "Baking App"));
-        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory).createMediaSource(uri);
+        DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(
+                getActivity(),
+                Util.getUserAgent(getActivity(), "Baking App")
+        );
+
+        MediaSource mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                .createMediaSource(uri);
 
         return mediaSource;
     }
