@@ -6,6 +6,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.espresso.idling.CountingIdlingResource;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import com.udacity.bakingapp.common.SharedViewModel;
 import com.udacity.bakingapp.ui.recipe.RecipeFragment;
 import com.udacity.bakingapp.ui.recipelist.RecipeListFragment;
 
@@ -25,6 +26,7 @@ import static org.hamcrest.Matchers.not;
 public class SimpleRecipeUITest {
 
     private CountingIdlingResource idlingResource;
+    private SharedViewModel sharedViewModel;
 
     @Before
     public void setUp() {
