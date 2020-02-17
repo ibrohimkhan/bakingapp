@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.udacity.bakingapp.R;
-import com.udacity.bakingapp.data.common.Event;
-import com.udacity.bakingapp.data.common.SharedViewModel;
+import com.udacity.bakingapp.common.Event;
+import com.udacity.bakingapp.common.SharedViewModel;
 import com.udacity.bakingapp.ui.ingredient.IngredientFragment;
 import com.udacity.bakingapp.ui.recipe.RecipeFragment;
 import com.udacity.bakingapp.ui.recipelist.RecipeListFragment;

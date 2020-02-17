@@ -1,4 +1,4 @@
-package com.udacity.bakingapp.data.common;
+package com.udacity.bakingapp.common;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 

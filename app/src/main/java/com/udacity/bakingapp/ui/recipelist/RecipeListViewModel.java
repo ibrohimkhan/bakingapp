@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.udacity.bakingapp.data.common.Event;
+import com.udacity.bakingapp.common.Event;
 import com.udacity.bakingapp.data.model.Recipe;
 import com.udacity.bakingapp.data.repository.RecipeRepository;
 

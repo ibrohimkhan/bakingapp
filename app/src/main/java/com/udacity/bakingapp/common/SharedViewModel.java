@@ -1,4 +1,4 @@
-package com.udacity.bakingapp.data.common;
+package com.udacity.bakingapp.common;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

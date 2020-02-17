@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.bakingapp.R;
-import com.udacity.bakingapp.data.common.Event;
+import com.udacity.bakingapp.common.Event;
 import com.udacity.bakingapp.data.model.Step;
 
 import butterknife.BindView;
@@ -50,7 +50,8 @@ public class StepViewHolder extends RecyclerView.ViewHolder implements View.OnCl
                     .load(step.thumbnailURL)
                     .fit()
                     .into(imageView);
-        } else {
+
+        } else if (imageView != null) {
             imageView.setVisibility(View.GONE);
         }
     }

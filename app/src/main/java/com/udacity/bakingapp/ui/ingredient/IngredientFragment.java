@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.udacity.bakingapp.R;
-import com.udacity.bakingapp.data.common.SharedViewModel;
+import com.udacity.bakingapp.common.SharedViewModel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

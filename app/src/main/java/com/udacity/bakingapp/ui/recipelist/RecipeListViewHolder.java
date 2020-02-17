@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.udacity.bakingapp.R;
-import com.udacity.bakingapp.data.common.Event;
+import com.udacity.bakingapp.common.Event;
 import com.udacity.bakingapp.data.model.Recipe;
 
 import butterknife.BindView;

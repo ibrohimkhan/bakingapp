@@ -3,7 +3,7 @@ package com.udacity.bakingapp.ui.recipe;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.udacity.bakingapp.data.common.Event;
+import com.udacity.bakingapp.common.Event;
 import com.udacity.bakingapp.data.model.Step;
 
 public class RecipeViewModel extends ViewModel {

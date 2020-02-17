@@ -23,7 +23,7 @@ import com.google.android.exoplayer2.upstream.DataSource;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.udacity.bakingapp.R;
-import com.udacity.bakingapp.data.common.SharedViewModel;
+import com.udacity.bakingapp.common.SharedViewModel;
 import com.udacity.bakingapp.data.model.Step;
 
 import butterknife.BindView;
