@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    android:padding="8dp"
+    android:background="@drawable/grey_border">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"
+        android:gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ingredient"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_marginEnd="8dp"
+            tools:text="Ingredient:" />
+
+        <TextView
+            android:id="@+id/tv_ingredient_widget"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/normal_text_size"
+            android:textAlignment="viewEnd"
+            tools:text="unsalted butter, softened and cut into 1 in. cubes" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/measure"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_marginEnd="8dp"
+            tools:text="Measure:" />
+
+        <TextView
+            android:id="@+id/tv_measure_widget"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/normal_text_size"
+            android:textAlignment="viewEnd"
+            tools:text="UNIT" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="top">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textSize="@dimen/normal_text_size"
+            android:layout_marginEnd="8dp"
+            tools:text="Quantity:" />
+
+        <TextView
+            android:id="@+id/tv_quantity_widget"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/normal_text_size"
+            android:textAlignment="viewEnd"
+            tools:text="680" />
+    </LinearLayout>
+</LinearLayout>

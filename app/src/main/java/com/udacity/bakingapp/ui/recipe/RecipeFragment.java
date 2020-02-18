@@ -18,6 +18,7 @@ import com.udacity.bakingapp.R;
 import com.udacity.bakingapp.common.Event;
 import com.udacity.bakingapp.common.SharedViewModel;
 import com.udacity.bakingapp.data.model.Recipe;
+import com.udacity.bakingapp.data.repository.RecipeRepository;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,6 +86,8 @@ public class RecipeFragment extends Fragment {
 
             adapter = new StepAdapter(viewModel, recipe.steps, getString(R.string.recipe_ingredients));
             recyclerView.setAdapter(adapter);
+
+            RecipeRepository.saveAsFavoriteIngredients(recipe.ingredients);
         });
 
         viewModel.step.observe(this, step -> {

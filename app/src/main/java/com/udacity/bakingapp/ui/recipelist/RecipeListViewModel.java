@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.udacity.bakingapp.common.Event;
+import com.udacity.bakingapp.data.local.IngredientEntity;
 import com.udacity.bakingapp.data.model.Recipe;
 import com.udacity.bakingapp.data.repository.RecipeRepository;
 
@@ -58,5 +59,12 @@ public class RecipeListViewModel extends ViewModel {
     private void notifyUI(List<Recipe> recipes) {
         loading.postValue(new Event<>(false));
         this.recipes.postValue(recipes);
+
+        List<IngredientEntity> items = RecipeRepository.getFavoriteIngredients()
+                .subscribeOn(Schedulers.io())
+                .blockingGet();
+
+        if (items == null || items.isEmpty())
+            RecipeRepository.saveDefaultIngredients(recipes.get(1).ingredients);
     }
 }

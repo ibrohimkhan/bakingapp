@@ -9,6 +9,6 @@
     android:textAlignment="center"
     android:paddingTop="48dp"
     android:paddingBottom="48dp"
-    android:layout_marginBottom="8dp"
+    android:layout_margin="8dp"
     android:background="@drawable/grey_border"
     tools:text="Nutella Pie"/>

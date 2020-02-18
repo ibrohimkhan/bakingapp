@@ -82,4 +82,12 @@ dependencies {
 
     // Retrofit RxJava 2 call adapters
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
+
+    // Database
+    implementation 'androidx.room:room-runtime:2.2.3'
+    annotationProcessor 'androidx.room:room-compiler:2.2.3'
+    implementation 'androidx.room:room-rxjava2:2.2.3'
+
+    // Debugging
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 }
