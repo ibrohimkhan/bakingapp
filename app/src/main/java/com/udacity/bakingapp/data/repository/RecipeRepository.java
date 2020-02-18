@@ -1,6 +1,12 @@
 package com.udacity.bakingapp.data.repository;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
+import android.content.Context;
+
 import com.udacity.bakingapp.BakingAppWidgetProvider;
+import com.udacity.bakingapp.BakingApplication;
+import com.udacity.bakingapp.R;
 import com.udacity.bakingapp.data.local.AppDatabase;
 import com.udacity.bakingapp.data.local.IngredientEntity;
 import com.udacity.bakingapp.data.model.Ingredient;
@@ -70,10 +76,19 @@ public final class RecipeRepository {
                     database.IngredientDao().insert(entities).subscribeOn(Schedulers.io()).subscribe();
                 }).subscribe();
 
-        BakingAppWidgetProvider.updateWidgetUI();
+        updateWidgetUI();
     }
 
     private static void delete() {
         database.IngredientDao().delete();
+    }
+
+    private static void updateWidgetUI() {
+        Context context = BakingApplication.getContext();
+        AppWidgetManager manager = AppWidgetManager.getInstance(context);
+        int[] ids = manager.getAppWidgetIds(new ComponentName(context, BakingAppWidgetProvider.class));
+
+        manager.notifyAppWidgetViewDataChanged(ids, R.id.sv_ingredients);
+        BakingAppWidgetProvider.updateWidgetUI(context, manager, ids);
     }
 }

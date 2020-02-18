@@ -15,11 +15,7 @@ import com.udacity.bakingapp.ui.widget.IngredientWidgetService;
  */
 public class BakingAppWidgetProvider extends AppWidgetProvider {
 
-    public static void updateWidgetUI() {
-        Context context = BakingApplication.getContext();
-        AppWidgetManager manager = AppWidgetManager.getInstance(context);
-        int[] ids = manager.getAppWidgetIds(new ComponentName(context, BakingAppWidgetProvider.class));
-
+    public static void updateWidgetUI(Context context, AppWidgetManager manager, int[] ids) {
         // Instruct the widget manager to update the widget
         for (int id : ids) {
             Intent serviceIntent = new Intent(context, IngredientWidgetService.class);
