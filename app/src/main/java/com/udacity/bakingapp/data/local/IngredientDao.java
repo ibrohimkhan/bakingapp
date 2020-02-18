@@ -11,7 +11,7 @@ import io.reactivex.Single;
 
 @Dao
 public interface IngredientDao {
-    @Query("select * from ingredients limit 1")
+    @Query("select * from ingredients")
     Single<List<IngredientEntity>> select();
 
     @Insert

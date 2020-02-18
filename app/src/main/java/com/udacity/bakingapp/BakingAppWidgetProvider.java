@@ -29,6 +29,7 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
             // Construct the RemoteViews object
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_app_widget_provider);
             views.setRemoteAdapter(R.id.sv_ingredients, serviceIntent);
+            views.setEmptyView(R.id.sv_ingredients, R.id.tv_ingredients_empty);
 
             manager.updateAppWidget(id, views);
         }
@@ -45,6 +46,7 @@ public class BakingAppWidgetProvider extends AppWidgetProvider {
             // Construct the RemoteViews object
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_app_widget_provider);
             views.setRemoteAdapter(R.id.sv_ingredients, serviceIntent);
+            views.setEmptyView(R.id.sv_ingredients, R.id.tv_ingredients_empty);
 
             // Instruct the widget manager to update the widget
             appWidgetManager.updateAppWidget(id, views);

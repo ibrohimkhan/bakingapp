@@ -10,6 +10,7 @@ import com.udacity.bakingapp.R;
 import com.udacity.bakingapp.data.local.IngredientEntity;
 import com.udacity.bakingapp.data.repository.RecipeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -27,7 +28,7 @@ public class IngredientWidgetService extends RemoteViewsService {
 
         private Context context;
         private int appWidgetId;
-        private List<IngredientEntity> ingredients;
+        private List<IngredientEntity> ingredients = new ArrayList<>();
 
         private CompositeDisposable disposable = new CompositeDisposable();
 
@@ -38,22 +39,18 @@ public class IngredientWidgetService extends RemoteViewsService {
 
         @Override
         public void onCreate() {
-            disposable.add(
-                    RecipeRepository.getFavoriteIngredients()
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(this::updateUIData)
-            );
+            RecipeRepository.getFavoriteIngredients()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::updateUIData);
         }
 
         @Override
         public void onDataSetChanged() {
-            disposable.add(
-                    RecipeRepository.getFavoriteIngredients()
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(this::updateUIData)
-            );
+            RecipeRepository.getFavoriteIngredients()
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(this::updateUIData);
         }
 
         @Override
@@ -63,7 +60,7 @@ public class IngredientWidgetService extends RemoteViewsService {
 
         @Override
         public int getCount() {
-            if (ingredients == null || ingredients.isEmpty()) return 0;
+            if (ingredients == null) return 0;
             return ingredients.size();
         }
 
@@ -100,7 +97,9 @@ public class IngredientWidgetService extends RemoteViewsService {
         }
 
         private void updateUIData(List<IngredientEntity> entities) {
-            ingredients = entities;
+            if (entities == null || entities.isEmpty()) return;
+            ingredients.clear();
+            ingredients.addAll(entities);
         }
     }
 }
